@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/weather
+    username: postgres
+    password: postgres
+  liquibase:
+    change-log: classpath:db/master.xml
+ip-api:
+  url: http://ip-api.com/json
+open-meteo:
+  url: https://api.open-meteo.com/v1/forecast/

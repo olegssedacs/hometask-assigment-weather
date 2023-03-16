@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="john.doe" id="create.table.client_api_keys">
+        <createTable tableName="client_api_keys">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_client_api_key_id"/>
+            </column>
+            <column name="api_key" type="varchar">
+                <constraints nullable="false"
+                             unique="true"
+                             uniqueConstraintName="uq_client_api_key"/>
+            </column>
+            <column name="revoked" type="boolean" defaultValueBoolean="false"/>
+            <column name="created_at" type="timestamp" defaultValueComputed="now()"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="unknown" id="default_client_api_keys">
+        <insert tableName="client_api_keys">
+            <column name="api_key" value="M2ZjNDZmOWItMzJmMC00YzhlLWE3ZTctNDY3YzQ2YzAzZjli"/>
+        </insert>
+        <insert tableName="client_api_keys">
+            <column name="api_key" value="OThiNGJkNzEtMTZjMy00YTMzLThjN2QtZDM1N2JmMTJhNzIx"/>
+            <column name="revoked" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
